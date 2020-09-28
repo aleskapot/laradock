@@ -553,6 +553,19 @@ services:
         - ${DATA_PATH_HOST}/neo4j:/var/lib/neo4j/data
       networks:
         - backend
+        
+### Firebird ##############################################
+    firebird:
+      image: jacobalberty/firebird:2.5-sc
+      ports:
+        - "3050:3050"
+      environment:
+        - TZ=${WORKSPACE_TIMEZONE}
+        - ISC_PASSWORD=masterkey
+      volumes:
+        - ${DATA_PATH_HOST}/firebird:/firebird
+      networks:
+        - backend        
 
 ### MongoDB ##############################################
     mongo:

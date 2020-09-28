@@ -649,6 +649,17 @@ RUN set -eux; \
   ;fi
 
 ###########################################################################
+# Firebird:
+###########################################################################
+
+USER root
+
+RUN apt-get -y install firebird-dev \
+    && docker-php-ext-install interbase \
+    && docker-php-ext-enable interbase \
+    && docker-php-ext-install pdo_firebird
+
+###########################################################################
 # Image optimizers:
 ###########################################################################
 
