@@ -654,10 +654,12 @@ RUN set -eux; \
 
 USER root
 
-RUN apt-get -y install firebird-dev \
-    && docker-php-ext-install interbase \
-    && docker-php-ext-enable interbase \
-    && docker-php-ext-install pdo_firebird
+RUN if [ ${LARADOCK_PHP_VERSION} = "7.1" ]; then \
+      apt-get -y install firebird-dev \
+      && docker-php-ext-install interbase \
+      && docker-php-ext-enable interbase \
+      && docker-php-ext-install pdo_firebird \
+    ;fi
 
 ###########################################################################
 # Image optimizers:
