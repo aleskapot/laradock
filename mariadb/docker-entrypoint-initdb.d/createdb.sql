@@ -19,4 +19,10 @@
 CREATE DATABASE IF NOT EXISTS `services` COLLATE 'utf8_general_ci' ;
 GRANT ALL ON `services`.* TO 'default'@'%' ;
 
+CREATE DATABASE IF NOT EXISTS `products` COLLATE 'utf8_general_ci' ;
+GRANT ALL ON `products`.* TO 'default'@'%' ;
+
+CREATE DATABASE IF NOT EXISTS `legacy` COLLATE 'utf8_general_ci' ;
+GRANT ALL ON `legacy`.* TO 'default'@'%' ;
+
 FLUSH PRIVILEGES ;
