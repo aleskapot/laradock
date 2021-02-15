@@ -22,4 +22,7 @@ GRANT ALL ON `services`.* TO 'default'@'%' ;
 CREATE DATABASE IF NOT EXISTS `legacy` COLLATE 'utf8_general_ci' ;
 GRANT ALL ON `legacy`.* TO 'default'@'%' ;
 
+CREATE DATABASE IF NOT EXISTS `strapi` COLLATE 'utf8_general_ci' ;
+GRANT ALL ON `strapi`.* TO 'default'@'%' ;
+
 FLUSH PRIVILEGES ;

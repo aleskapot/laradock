@@ -553,7 +553,7 @@ services:
         - ${DATA_PATH_HOST}/neo4j:/var/lib/neo4j/data
       networks:
         - backend
-        
+
 ### Firebird ##############################################
     firebird:
       image: jacobalberty/firebird:2.5-sc
@@ -565,7 +565,7 @@ services:
       volumes:
         - ${DATA_PATH_HOST}/firebird:/firebird
       networks:
-        - backend        
+        - backend
 
 ### MongoDB ##############################################
     mongo:
@@ -1303,7 +1303,7 @@ services:
     docker-in-docker:
       image: docker:19.03-dind
       environment:
-        DOCKER_TLS_SAN: DNS:docker-in-docker      
+        DOCKER_TLS_SAN: DNS:docker-in-docker
       privileged: true
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
@@ -1728,3 +1728,27 @@ services:
         - ${DATA_PATH_HOST}/tomcat/logs:/usr/local/tomcat/logs
       # restart: always
 
+### Strapi headless CMS ########################################
+    strapi:
+      image: strapi/strapi
+      restart: unless-stopped
+      environment:
+        PORT: '1337'
+        PUBLIC_ADMIN_URL: 'http://cms.local/dashboard'
+        PUBLIC_URL: 'http://cms.local/api/v1'
+        DATABASE_CLIENT: mysql
+        DATABASE_HOST: mariadb
+        DATABASE_PORT: ${MARIADB_PORT}
+        DATABASE_NAME: 'strapi'
+        DATABASE_USERNAME: ${MARIADB_USER}
+        DATABASE_PASSWORD: ${MARIADB_PASSWORD}
+        DATABASE_SSL: 'false'
+      volumes:
+        - ${APP_CODE_PATH_HOST}/strapi:/srv/app
+      ports:
+        - '1337:1337'
+      depends_on:
+        - mariadb
+      networks:
+        - frontend
+        - backend
