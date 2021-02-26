@@ -1743,6 +1743,9 @@ services:
         DATABASE_USERNAME: ${MARIADB_USER}
         DATABASE_PASSWORD: ${MARIADB_PASSWORD}
         DATABASE_SSL: 'false'
+        MINIO_HOST: 's3.local'
+        MINIO_ACCESS_KEY: 'access'
+        MINIO_SECRET_KEY: 'secretkey'
       volumes:
         - ${APP_CODE_PATH_HOST}/strapi:/srv/app
       ports:
