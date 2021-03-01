@@ -1734,8 +1734,8 @@ services:
       restart: unless-stopped
       environment:
         PORT: '1337'
-        PUBLIC_ADMIN_URL: 'http://cms.local/dashboard'
-        PUBLIC_URL: 'http://cms.local/api/v1'
+        ADMIN_URL: 'http://cms.local/dashboard'
+        API_URL: 'http://cms.local/api/v1'
         DATABASE_CLIENT: mysql
         DATABASE_HOST: mariadb
         DATABASE_PORT: ${MARIADB_PORT}
